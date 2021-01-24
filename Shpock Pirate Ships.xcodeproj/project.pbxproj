@@ -19,6 +19,7 @@
 		96A4926E25BC849B006C807C /* PirateShipDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A4926D25BC849B006C807C /* PirateShipDetailVC.swift */; };
 		96A4927025BC8645006C807C /* PirateShipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A4926F25BC8645006C807C /* PirateShipViewModel.swift */; };
 		96A4927225BC89A6006C807C /* PirateShipDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A4927125BC89A6006C807C /* PirateShipDetailViewModel.swift */; };
+		96D6A4B425BDA2270003F8B0 /* PirateShipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6A4B325BDA2270003F8B0 /* PirateShipCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		96A4926D25BC849B006C807C /* PirateShipDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateShipDetailVC.swift; sourceTree = "<group>"; };
 		96A4926F25BC8645006C807C /* PirateShipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateShipViewModel.swift; sourceTree = "<group>"; };
 		96A4927125BC89A6006C807C /* PirateShipDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateShipDetailViewModel.swift; sourceTree = "<group>"; };
+		96D6A4B325BDA2270003F8B0 /* PirateShipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateShipCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			children = (
 				96A4924225BC5E3E006C807C /* PirateShipCollectionVC.swift */,
 				96A4926D25BC849B006C807C /* PirateShipDetailVC.swift */,
+				96D6A4B325BDA2270003F8B0 /* PirateShipCollectionViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				96A4926225BC608F006C807C /* UIView+Extensions.swift in Sources */,
 				96A4927225BC89A6006C807C /* PirateShipDetailViewModel.swift in Sources */,
 				96A4924125BC5E3E006C807C /* SceneDelegate.swift in Sources */,
+				96D6A4B425BDA2270003F8B0 /* PirateShipCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

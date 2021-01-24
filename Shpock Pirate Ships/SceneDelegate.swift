@@ -21,7 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     let window = UIWindow(windowScene: scene)
     self.window = window
-    self.window?.rootViewController = ViewController()
+    let pirateShipVC = PirateShipCollectionVC()
+    let navigationController = UINavigationController(rootViewController: pirateShipVC)
+    self.window?.rootViewController = navigationController
     self.window?.makeKeyAndVisible()
   }
 

@@ -12,3 +12,19 @@ protocol PirateShipViewModel {
   func displayShips(ships: [PirateShip])
   func fetchPirateShips()
 }
+
+class PirateShipViewModelImp: PirateShipViewModel {
+  var model: [PirateShip]
+  
+  init(model: [PirateShip]) {
+    self.model = model
+  }
+  
+  func displayShips(ships: [PirateShip]) {
+    
+  }
+  
+  func fetchPirateShips() {
+    
+  }
+}
