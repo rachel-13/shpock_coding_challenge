@@ -12,3 +12,5 @@ protocol PirateShipDetailViewModel {
   func displayShip(ship: PirateShip)
   func buttonTapped()
 }
+
+

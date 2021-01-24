@@ -11,6 +11,7 @@ import UIKit
 class PirateShipCollectionVC: UIViewController, UICollectionViewDelegate {
   private let cellIdentifier = "collectionCell"
   var collectionView: UICollectionView!
+  let viewModel: PirateShipViewModel = PirateShipViewModelImp(model: [PirateShip]())
   
   init() {
     super.init(nibName: nil, bundle: nil)
@@ -25,6 +26,22 @@ class PirateShipCollectionVC: UIViewController, UICollectionViewDelegate {
     self.view.backgroundColor = .white
     setupNavigationBar()
     setupCollectionView()
+    fetchShips()
+  }
+  
+  private func fetchShips() {
+    viewModel.fetchPirateShips { [weak self] isShipsFetched, error in
+      guard let self = self else { return }
+      if isShipsFetched {
+        self.updateCollectionView()
+      }
+    }
+  }
+  
+  private func updateCollectionView() {
+    DispatchQueue.main.async {
+      self.collectionView.reloadData()
+    }
   }
   
   private func setupNavigationBar() {
@@ -34,6 +51,7 @@ class PirateShipCollectionVC: UIViewController, UICollectionViewDelegate {
   private func setupCollectionView() {
     let flowLayout = UICollectionViewFlowLayout()
     self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout).withAutoLayout()
+    collectionView.showsVerticalScrollIndicator = false
     collectionView.backgroundColor = .white
     collectionView.delegate = self
     collectionView.dataSource = self
@@ -53,20 +71,35 @@ class PirateShipCollectionVC: UIViewController, UICollectionViewDelegate {
 
 extension PirateShipCollectionVC: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 20
+    return viewModel.models.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier,
                                                   for: indexPath as IndexPath) as! PirateShipCollectionViewCell
-  
+    let currentShip = viewModel.models[indexPath.row]
+    if let data = viewModel.cache[currentShip.id] {
+      cell.imageData = data
+    } else {
+      downloadAndSetCellImage(cell: cell, ship: currentShip)
+    }
+    cell.ship = currentShip
     return cell
+  }
+  
+  private func downloadAndSetCellImage(cell: PirateShipCollectionViewCell, ship: PirateShip) {
+    guard let imageUrl = ship.image else { return }
+    viewModel.getImage(shipID: ship.id, url: imageUrl) { data in
+      DispatchQueue.main.async {
+        cell.imageData = data
+      }
+    }
   }
 }
 
 extension PirateShipCollectionVC: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: (collectionView.frame.width - 20) / 2, height: (collectionView.frame.height - 30) / 3.2)
+    return CGSize(width: (collectionView.frame.width - 20) / 2, height: (collectionView.frame.height - 30) / 2.5)
   }
 }
 

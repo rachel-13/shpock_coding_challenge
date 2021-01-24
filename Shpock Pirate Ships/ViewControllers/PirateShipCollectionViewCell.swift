@@ -12,21 +12,43 @@ class PirateShipCollectionViewCell: UICollectionViewCell {
   lazy var imageView: UIImageView = {
     let uiimageView = UIImageView(frame: .zero).withAutoLayout()
     uiimageView.contentMode = .scaleAspectFit
-    uiimageView.backgroundColor = .blue
+    uiimageView.image = UIImage(named: "no_image")
     return uiimageView
   }()
   
   lazy var titleLabel: UILabel = {
     let uiLabel = UILabel(frame: .zero).withAutoLayout()
-    uiLabel.text = "Title"
+    uiLabel.font = uiLabel.font.withSize(15)
+    uiLabel.lineBreakMode = .byWordWrapping
+    uiLabel.numberOfLines = 0
     return uiLabel
   }()
   
   lazy var priceLabel: UILabel = {
     let uiLabel = UILabel(frame: .zero).withAutoLayout()
-    uiLabel.text = "Price"
+    uiLabel.text = "No Price Available"
+    uiLabel.font = uiLabel.font.withSize(15)
     return uiLabel
   }()
+  
+  var ship: PirateShip? {
+    didSet {
+      guard let ship = ship else { return }
+      titleLabel.text = ship.title ?? "No Title Available"
+      priceLabel.text = "$\(ship.price ?? 0)"
+    }
+  }
+  
+  var imageData: Data? {
+    didSet {
+      if let imageData = imageData,
+        let uiimage = UIImage(data: imageData) {
+        imageView.image = uiimage
+      } else {
+        imageView.image = UIImage(named: "no_image")
+      }
+    }
+  }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
@@ -46,7 +68,6 @@ class PirateShipCollectionViewCell: UICollectionViewCell {
   }
   
   private func setupContentView() {
-    self.contentView.backgroundColor = .darkGray
     self.contentView.layer.cornerRadius = 5
     self.contentView.layer.borderColor = UIColor.black.cgColor
     self.contentView.layer.borderWidth = 1
@@ -55,7 +76,7 @@ class PirateShipCollectionViewCell: UICollectionViewCell {
   private func setupImageView() {
     let imageViewConstraints = [
       imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-      imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -70),
+      imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.5),
       imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
       imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
     ]
@@ -75,7 +96,8 @@ class PirateShipCollectionViewCell: UICollectionViewCell {
     let priceLabelConstraints = [
       priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
       priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-      priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10)
+      priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+      priceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
     ]
     NSLayoutConstraint.activate(priceLabelConstraints)
   }

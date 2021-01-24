@@ -9,22 +9,50 @@
 import Foundation
 
 protocol PirateShipViewModel {
-  func displayShips(ships: [PirateShip])
-  func fetchPirateShips()
+  var models: [PirateShip] { get }
+  var cache: [Int: Data] { get }
+  func fetchPirateShips(completionHandler: @escaping (Bool, APIError?) -> Void)
+  func getImage(shipID: Int, url: String, completionHandler: @escaping (Data?) -> Void)
 }
 
 class PirateShipViewModelImp: PirateShipViewModel {
-  var model: [PirateShip]
+  var models: [PirateShip]
+  let api: PirateShipAPI
+  var cache: [Int : Data]
   
-  init(model: [PirateShip]) {
-    self.model = model
+  init(model: [PirateShip], api: PirateShipAPI = PirateShipAPIImp()) {
+    self.models = model
+    self.api = api
+    self.cache = [Int: Data]()
   }
   
-  func displayShips(ships: [PirateShip]) {
-    
+  func fetchPirateShips(completionHandler: @escaping (Bool, APIError?) -> Void) {
+    api.getPirateShip { [weak self] response in
+      guard let self = self else { return }
+      switch response {
+        case .success(let apiResponse):
+          if apiResponse.success {
+            self.models = apiResponse.ships
+            completionHandler(true, nil)
+          } else {
+            completionHandler(false, APIError.unknownError)
+        }
+        case .failure(let error):
+          completionHandler(false, error)
+      }
+    }
   }
   
-  func fetchPirateShips() {
-    
+  func getImage(shipID: Int, url: String, completionHandler: @escaping (Data?) -> Void) {
+    api.getImage(url: url) { [weak self] response in
+      guard let self = self else { return }
+      switch response {
+        case .success(let data):
+          self.cache[shipID] = data
+          completionHandler(data)
+        case .failure(_):
+          completionHandler(nil)
+      }
+    }
   }
 }
