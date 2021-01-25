@@ -41,9 +41,24 @@ class PirateShipCollectionVC: UIViewController, UICollectionViewDelegate {
   
   private func bindViewModel() {
     viewModel.setup()
-    viewModel.models.bind { ships in
+    viewModel.models.bind { [weak self] ships in
+      guard let self = self else { return }
       self.updateCollectionView()
     }
+    
+    viewModel.errorMessage.bind { [weak self] errorMessage in
+      guard let self = self else { return }
+      if let errorMessage = errorMessage {
+        self.showErrorMessage(errorMessage: errorMessage)
+      }
+    }
+  }
+  
+  private func showErrorMessage(errorMessage: String) {
+    let alert = UIAlertController(title: nil, message: errorMessage, preferredStyle: .alert)
+    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+    alert.addAction(okAction)
+    self.present(alert, animated: true, completion: nil)
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -11,6 +11,7 @@ import Foundation
 protocol PirateShipViewModel {
   var models: Observable<[PirateShip]?> { get }
   var cache: [Int: Data] { get }
+  var errorMessage: Observable<String?> { get }
   func setup()
   func getImage(shipID: Int, url: String, completionHandler: @escaping (Data?) -> Void)
   func goToDetail(ship: PirateShip, imageData: Data?) -> PirateShipDetailVC
@@ -20,11 +21,13 @@ class PirateShipViewModelImp: PirateShipViewModel {
   var models: Observable<[PirateShip]?>
   let api: PirateShipAPI
   var cache: [Int : Data]
+  var errorMessage: Observable<String?>
   
   init(api: PirateShipAPI = PirateShipAPIImp()) {
     self.models = Observable<[PirateShip]?>(nil)
     self.api = api
     self.cache = [Int: Data]()
+    self.errorMessage = Observable<String?>(nil)
   }
   
   func setup() {
@@ -35,9 +38,15 @@ class PirateShipViewModelImp: PirateShipViewModel {
           if apiResponse.success {
             self.models.value = apiResponse.ships
         }
-        case .failure(_):
-          // handle error
-          break
+        case .failure(let error):
+          switch error {
+            case .invalidURL:
+              self.errorMessage.value = "URL not valid"
+            case .parsingError:
+              self.errorMessage.value = "Parsing response error"
+            default:
+              self.errorMessage.value = "Unknown Error"
+          }
       }
     }
   }

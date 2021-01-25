@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// referred from https://riptutorial.com/ios/example/27354/mvvm-without-reactive-programming
 class Observable<T> {
   typealias Listener = (T) -> Void
   var listener: Listener?

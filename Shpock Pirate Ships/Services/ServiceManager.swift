@@ -25,9 +25,7 @@ protocol ServiceManager {
 class ServiceManagerImp: ServiceManager {
   static let shared = ServiceManagerImp()
   
-  private init() {
-    
-  }
+  private init() { }
   
   func get(url: String, completion: @escaping APICompletionHandler) {
     guard let url = URL(string: url) else {

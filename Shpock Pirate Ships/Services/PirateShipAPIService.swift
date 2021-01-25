@@ -30,7 +30,6 @@ class PirateShipAPIImp: PirateShipAPI {
           do {
             if let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] {
               let apiResponse = GetPirateShipsResponse(jsonObject: json)
-              
               completion(.success(apiResponse))
             } else {
               completion(.failure(.parsingError))
@@ -43,7 +42,7 @@ class PirateShipAPIImp: PirateShipAPI {
       }
     }
   }
-
+  
   func getImage(url: String, completion: @escaping APICompletionHandler) {
     serviceManager.get(url: url) { response in
       switch response {

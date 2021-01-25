@@ -40,12 +40,23 @@ class PirateShipViewModelTests: XCTestCase {
     XCTAssertNil(sut.models.value?[1].title)
   }
   
-  func test_getPirateShipsApi_fails() {
+  func test_getPirateShipsApi_failsWith_parsingError() {
     
     mockAPI.shouldAPISucceed = false
     mockAPI.stubbedAPIError = APIError.parsingError
     sut.setup()
     
+    XCTAssertEqual(sut.errorMessage.value, "Parsing response error")
+    XCTAssertNil(sut.models.value)
+  }
+  
+  func test_getPirateShipsApi_failsWith_invalidUrlError() {
+    
+    mockAPI.shouldAPISucceed = false
+    mockAPI.stubbedAPIError = APIError.invalidURL
+    sut.setup()
+    
+    XCTAssertEqual(sut.errorMessage.value, "URL not valid")
     XCTAssertNil(sut.models.value)
   }
   
