@@ -125,10 +125,8 @@
 		96A4925425BC5E41006C807C /* Shpock Pirate ShipsTests */ = {
 			isa = PBXGroup;
 			children = (
+				96A5D5E025BEA64C0019E327 /* ViewModels */,
 				96A5D5D925BE7C6F0019E327 /* Mocks */,
-				96A5D5D125BE7ACF0019E327 /* PirateShipViewModelTests.swift */,
-				96A5D5D325BE7AE90019E327 /* PirateShipDetailViewModelTests.swift */,
-				96A5D5D725BE7B5C0019E327 /* PirateShipCellViewModelTests.swift */,
 				96A5D5DE25BE894E0019E327 /* PirateShipAPIServiceTests.swift */,
 			);
 			path = "Shpock Pirate ShipsTests";
@@ -195,6 +193,16 @@
 				96A5D5DC25BE88CE0019E327 /* MockServiceManager.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		96A5D5E025BEA64C0019E327 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				96A5D5D125BE7ACF0019E327 /* PirateShipViewModelTests.swift */,
+				96A5D5D325BE7AE90019E327 /* PirateShipDetailViewModelTests.swift */,
+				96A5D5D725BE7B5C0019E327 /* PirateShipCellViewModelTests.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		96D6A4B925BE50B70003F8B0 /* CollectionViewCell */ = {
