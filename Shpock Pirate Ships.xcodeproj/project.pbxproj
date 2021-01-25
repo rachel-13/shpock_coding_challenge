@@ -24,6 +24,8 @@
 		96A5D5D425BE7AE90019E327 /* PirateShipDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A5D5D325BE7AE90019E327 /* PirateShipDetailViewModelTests.swift */; };
 		96A5D5D825BE7B5C0019E327 /* PirateShipCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A5D5D725BE7B5C0019E327 /* PirateShipCellViewModelTests.swift */; };
 		96A5D5DB25BE7CD90019E327 /* MockPirateShipAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A5D5DA25BE7CD90019E327 /* MockPirateShipAPI.swift */; };
+		96A5D5DD25BE88CE0019E327 /* MockServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A5D5DC25BE88CE0019E327 /* MockServiceManager.swift */; };
+		96A5D5DF25BE894E0019E327 /* PirateShipAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A5D5DE25BE894E0019E327 /* PirateShipAPIServiceTests.swift */; };
 		96D6A4B425BDA2270003F8B0 /* PirateShipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6A4B325BDA2270003F8B0 /* PirateShipCollectionViewCell.swift */; };
 		96D6A4B825BDD06B0003F8B0 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6A4B725BDD06B0003F8B0 /* ServiceManager.swift */; };
 /* End PBXBuildFile section */
@@ -60,6 +62,8 @@
 		96A5D5D325BE7AE90019E327 /* PirateShipDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateShipDetailViewModelTests.swift; sourceTree = "<group>"; };
 		96A5D5D725BE7B5C0019E327 /* PirateShipCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateShipCellViewModelTests.swift; sourceTree = "<group>"; };
 		96A5D5DA25BE7CD90019E327 /* MockPirateShipAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockPirateShipAPI.swift; sourceTree = "<group>"; };
+		96A5D5DC25BE88CE0019E327 /* MockServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServiceManager.swift; sourceTree = "<group>"; };
+		96A5D5DE25BE894E0019E327 /* PirateShipAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateShipAPIServiceTests.swift; sourceTree = "<group>"; };
 		96D6A4B325BDA2270003F8B0 /* PirateShipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateShipCollectionViewCell.swift; sourceTree = "<group>"; };
 		96D6A4B725BDD06B0003F8B0 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,11 +125,11 @@
 		96A4925425BC5E41006C807C /* Shpock Pirate ShipsTests */ = {
 			isa = PBXGroup;
 			children = (
-				96A4925725BC5E41006C807C /* Info.plist */,
 				96A5D5D925BE7C6F0019E327 /* Mocks */,
 				96A5D5D125BE7ACF0019E327 /* PirateShipViewModelTests.swift */,
 				96A5D5D325BE7AE90019E327 /* PirateShipDetailViewModelTests.swift */,
 				96A5D5D725BE7B5C0019E327 /* PirateShipCellViewModelTests.swift */,
+				96A5D5DE25BE894E0019E327 /* PirateShipAPIServiceTests.swift */,
 			);
 			path = "Shpock Pirate ShipsTests";
 			sourceTree = "<group>";
@@ -188,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				96A5D5DA25BE7CD90019E327 /* MockPirateShipAPI.swift */,
+				96A5D5DC25BE88CE0019E327 /* MockServiceManager.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -321,9 +326,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				96A5D5D425BE7AE90019E327 /* PirateShipDetailViewModelTests.swift in Sources */,
+				96A5D5DF25BE894E0019E327 /* PirateShipAPIServiceTests.swift in Sources */,
 				96A5D5D825BE7B5C0019E327 /* PirateShipCellViewModelTests.swift in Sources */,
 				96A5D5D225BE7ACF0019E327 /* PirateShipViewModelTests.swift in Sources */,
 				96A5D5DB25BE7CD90019E327 /* MockPirateShipAPI.swift in Sources */,
+				96A5D5DD25BE88CE0019E327 /* MockServiceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

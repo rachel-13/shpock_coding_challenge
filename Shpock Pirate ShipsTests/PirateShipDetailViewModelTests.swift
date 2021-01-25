@@ -11,12 +11,34 @@ import XCTest
 
 class PirateShipDetailViewModelTests: XCTestCase {
   
-  override func setUpWithError() throws {
-   
+  var sut: PirateShipDetailViewModelImp!
+  
+  func test_didTapButton_with_ar() {
+    let mockPirateShip_ar = PirateShip(id: 1,
+                                       title: "title1",
+                                       description: nil,
+                                       price: 10,
+                                       image: nil,
+                                       greetingType: "ar")
+    sut = PirateShipDetailViewModelImp(model: mockPirateShip_ar, imageData: Data())
+    sut.model.value = mockPirateShip_ar
+    sut.didTapButton()
+    XCTAssertEqual(sut.greeting.value, "Arrr!")
+    XCTAssertEqual(sut.model.value.title, mockPirateShip_ar.title)
   }
   
-  override func tearDownWithError() throws {
-   
+  func test_didTapButton_with_ah() {
+    let mockPirateShip_ah = PirateShip(id: 2,
+                                       title: nil,
+                                       description: "description2",
+                                       price: 20,
+                                       image: nil,
+                                       greetingType: "ah")
+    sut = PirateShipDetailViewModelImp(model: mockPirateShip_ah, imageData: Data())
+    sut.model.value = mockPirateShip_ah
+    sut.didTapButton()
+    XCTAssertEqual(sut.greeting.value, "Ahoi!")
+    XCTAssertNil(sut.model.value.title)
+    XCTAssertEqual(sut.model.value.description, mockPirateShip_ah.description)
   }
-  
 }

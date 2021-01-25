@@ -77,9 +77,9 @@ class PirateShipDetailVC: UIViewController {
   
   private func bindViewModel() {
     viewModel.model.bind { pirateShip in
-      self.titleLabel.text = pirateShip.title ?? "No Title Available"
+      self.titleLabel.text = pirateShip.getTitle()
       self.descriptionLabel.text = pirateShip.description
-      self.priceLabel.text = "$\(pirateShip.price ?? 0)"
+      self.priceLabel.text = pirateShip.getPrice()
     }
     
     viewModel.imageData.bind { data in

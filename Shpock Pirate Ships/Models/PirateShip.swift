@@ -15,7 +15,6 @@ struct PirateShip: Codable {
   let price: Int?
   let image: String?
   let greetingType: String?
-  let imageData: Data?
   
   private enum CodingKeys: String, CodingKey {
     case id = "id"
@@ -24,7 +23,6 @@ struct PirateShip: Codable {
     case description = "description"
     case image = "image"
     case greetingType = "greeting_type"
-    case imageData = "imageData" 
   }
   
   func getGreeting() -> String {
@@ -43,6 +41,17 @@ struct PirateShip: Codable {
       default:
         return "Ahoi!"
     }
+  }
+  
+  func getPrice() -> String {
+    guard let price = self.price else {
+      return "No price available"
+    }
+    return "$\(price)"
+  }
+  
+  func getTitle() -> String {
+    return self.title ?? "No Title Available"
   }
 }
 

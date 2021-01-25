@@ -26,7 +26,6 @@ class PirateShipCollectionViewCell: UICollectionViewCell {
   
   lazy var priceLabel: UILabel = {
     let uiLabel = UILabel(frame: .zero).withAutoLayout()
-    uiLabel.text = "No Price Available"
     uiLabel.font = uiLabel.font.withSize(15)
     return uiLabel
   }()
@@ -55,8 +54,8 @@ class PirateShipCollectionViewCell: UICollectionViewCell {
   private func bindViewModel() {
     viewModel.ship.bind { [weak self] ship in
       guard let self = self, let ship = ship else { return }
-      self.titleLabel.text = ship.title ?? "No Title Available"
-      self.priceLabel.text = "$\(ship.price ?? 0)"
+      self.titleLabel.text = ship.getTitle()
+      self.priceLabel.text = ship.getPrice()
     }
     
     viewModel.imageData.bind { [weak self] data in

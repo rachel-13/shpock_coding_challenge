@@ -10,13 +10,21 @@ import XCTest
 @testable import Shpock_Pirate_Ships
 
 class PirateShipCellViewModelTests: XCTestCase {
-
+  var sut: CollectionCellViewModel!
+  
   override func setUpWithError() throws {
-   
+    sut = CollectionCellViewModel()
   }
   
-  override func tearDownWithError() throws {
-   
+  func test_init_set_ship() {
+    let mockPirateShip = PirateShip(id: 1,
+                                    title: "title1",
+                                    description: nil,
+                                    price: 10,
+                                    image: nil,
+                                    greetingType: "ar")
+    sut.ship.value = mockPirateShip
+    XCTAssertEqual(sut.ship.value?.greetingType, mockPirateShip.greetingType)
   }
   
 }
