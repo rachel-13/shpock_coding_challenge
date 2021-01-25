@@ -20,6 +20,7 @@
 		96A4927025BC8645006C807C /* PirateShipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A4926F25BC8645006C807C /* PirateShipViewModel.swift */; };
 		96A4927225BC89A6006C807C /* PirateShipDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A4927125BC89A6006C807C /* PirateShipDetailViewModel.swift */; };
 		96A5D5CD25BE673A0019E327 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A5D5CC25BE673A0019E327 /* Observable.swift */; };
+		96A5D5D025BE751C0019E327 /* CollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A5D5CF25BE751C0019E327 /* CollectionCellViewModel.swift */; };
 		96D6A4B425BDA2270003F8B0 /* PirateShipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6A4B325BDA2270003F8B0 /* PirateShipCollectionViewCell.swift */; };
 		96D6A4B825BDD06B0003F8B0 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6A4B725BDD06B0003F8B0 /* ServiceManager.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		96A4926F25BC8645006C807C /* PirateShipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateShipViewModel.swift; sourceTree = "<group>"; };
 		96A4927125BC89A6006C807C /* PirateShipDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateShipDetailViewModel.swift; sourceTree = "<group>"; };
 		96A5D5CC25BE673A0019E327 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		96A5D5CF25BE751C0019E327 /* CollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellViewModel.swift; sourceTree = "<group>"; };
 		96D6A4B325BDA2270003F8B0 /* PirateShipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateShipCollectionViewCell.swift; sourceTree = "<group>"; };
 		96D6A4B725BDD06B0003F8B0 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,6 +151,7 @@
 		96A4926725BC8390006C807C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				96A5D5CE25BE75040019E327 /* CollectionViewCell */,
 				96A4926F25BC8645006C807C /* PirateShipViewModel.swift */,
 				96A4927125BC89A6006C807C /* PirateShipDetailViewModel.swift */,
 			);
@@ -161,6 +164,14 @@
 				96A4926925BC8408006C807C /* PirateShip.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		96A5D5CE25BE75040019E327 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				96A5D5CF25BE751C0019E327 /* CollectionCellViewModel.swift */,
+			);
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 		96D6A4B925BE50B70003F8B0 /* CollectionViewCell */ = {
@@ -281,6 +292,7 @@
 				96A4926525BC832F006C807C /* PirateShipAPIService.swift in Sources */,
 				96A4926225BC608F006C807C /* UIView+Extensions.swift in Sources */,
 				96A4927225BC89A6006C807C /* PirateShipDetailViewModel.swift in Sources */,
+				96A5D5D025BE751C0019E327 /* CollectionCellViewModel.swift in Sources */,
 				96A4924125BC5E3E006C807C /* SceneDelegate.swift in Sources */,
 				96D6A4B425BDA2270003F8B0 /* PirateShipCollectionViewCell.swift in Sources */,
 			);

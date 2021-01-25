@@ -20,7 +20,7 @@ class PirateShipCollectionVC: UIViewController, UICollectionViewDelegate {
     return collView
   }()
   
-  let viewModel: PirateShipViewModel = PirateShipViewModelImp(model: [PirateShip]())
+  let viewModel: PirateShipViewModel = PirateShipViewModelImp()
   
   init() {
     super.init(nibName: nil, bundle: nil)
@@ -36,18 +36,27 @@ class PirateShipCollectionVC: UIViewController, UICollectionViewDelegate {
     self.view.addSubview(collectionView)
     setupNavigationBar()
     setupCollectionView()
-    fetchShips()
+    bindViewModel()
   }
   
-  private func fetchShips() {
-    viewModel.fetchPirateShips { [weak self] isShipsFetched, error in
-      guard let self = self else { return }
-      if isShipsFetched {
-        self.updateCollectionView()
-      }
+  private func bindViewModel() {
+    viewModel.setup()
+    viewModel.models.bind { ships in
+      self.updateCollectionView()
     }
   }
   
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    guard let models = viewModel.models.value else { return }
+    
+    let selectedShip = models[indexPath.row]
+    let imageData = viewModel.cache[selectedShip.id]
+    let detailVC = viewModel.goToDetail(ship: selectedShip, imageData: imageData)
+    self.navigationController?.pushViewController(detailVC, animated: true)
+  }
+}
+
+extension PirateShipCollectionVC {
   private func updateCollectionView() {
     DispatchQueue.main.async {
       self.collectionView.reloadData()
@@ -69,30 +78,26 @@ class PirateShipCollectionVC: UIViewController, UICollectionViewDelegate {
     ]
     NSLayoutConstraint.activate(constraints)
   }
-  
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let selectedShip = viewModel.models[indexPath.row]
-    let imageData = viewModel.cache[selectedShip.id]
-    let detailVC = viewModel.goToDetail(ship: selectedShip, imageData: imageData)
-    self.navigationController?.pushViewController(detailVC, animated: true)
-  }
 }
 
 extension PirateShipCollectionVC: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return viewModel.models.count
+    guard let models = viewModel.models.value else { return 0 }
+    return models.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier,
                                                   for: indexPath as IndexPath) as! PirateShipCollectionViewCell
-    let currentShip = viewModel.models[indexPath.row]
+    guard let models = viewModel.models.value else { return cell }
+    
+    let currentShip = models[indexPath.row]
     if let data = viewModel.cache[currentShip.id] {
-      cell.imageData = data
+      cell.viewModel.imageData.value = data
     } else {
       downloadAndSetCellImage(cell: cell, ship: currentShip)
     }
-    cell.ship = currentShip
+    cell.viewModel.ship.value = currentShip
     return cell
   }
   
@@ -100,7 +105,7 @@ extension PirateShipCollectionVC: UICollectionViewDataSource {
     guard let imageUrl = ship.image else { return }
     viewModel.getImage(shipID: ship.id, url: imageUrl) { data in
       DispatchQueue.main.async {
-        cell.imageData = data
+        cell.viewModel.imageData.value = data
       }
     }
   }

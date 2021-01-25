@@ -31,32 +31,16 @@ class PirateShipCollectionViewCell: UICollectionViewCell {
     return uiLabel
   }()
   
-  var ship: PirateShip? {
-    didSet {
-      guard let ship = ship else { return }
-      titleLabel.text = ship.title ?? "No Title Available"
-      priceLabel.text = "$\(ship.price ?? 0)"
-    }
-  }
-  
-  var imageData: Data? {
-    didSet {
-      if let imageData = imageData,
-        let uiimage = UIImage(data: imageData) {
-        imageView.image = uiimage
-      } else {
-        imageView.image = UIImage(named: "no_image")
-      }
-    }
-  }
+  var viewModel: CollectionCellViewModel
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
   override init(frame: CGRect) {
-    super.init(frame: CGRect.zero)
+    self.viewModel = CollectionCellViewModel()
     
+    super.init(frame: CGRect.zero)
     self.contentView.addSubview(imageView)
     self.contentView.addSubview(titleLabel)
     self.contentView.addSubview(priceLabel)
@@ -65,7 +49,29 @@ class PirateShipCollectionViewCell: UICollectionViewCell {
     setupImageView()
     setupTitleLabel()
     setupPriceLabel()
+    bindViewModel()
   }
+  
+  private func bindViewModel() {
+    viewModel.ship.bind { [weak self] ship in
+      guard let self = self, let ship = ship else { return }
+      self.titleLabel.text = ship.title ?? "No Title Available"
+      self.priceLabel.text = "$\(ship.price ?? 0)"
+    }
+    
+    viewModel.imageData.bind { [weak self] data in
+      guard let self = self else { return }
+      if let imageData = data,
+        let uiimage = UIImage(data: imageData) {
+        self.imageView.image = uiimage
+      } else {
+        self.imageView.image = UIImage(named: "no_image")
+      }
+    }
+  }
+}
+
+extension PirateShipCollectionViewCell {
   
   private func setupContentView() {
     self.contentView.layer.cornerRadius = 5

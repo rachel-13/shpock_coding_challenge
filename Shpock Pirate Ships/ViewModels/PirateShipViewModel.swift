@@ -9,39 +9,44 @@
 import Foundation
 
 protocol PirateShipViewModel {
-  var models: [PirateShip] { get }
+  var models: Observable<[PirateShip]?> { get }
   var cache: [Int: Data] { get }
-  func fetchPirateShips(completionHandler: @escaping (Bool, APIError?) -> Void)
+  func setup()
+//  func fetchPirateShips(completionHandler: @escaping (Bool, APIError?) -> Void)
   func getImage(shipID: Int, url: String, completionHandler: @escaping (Data?) -> Void)
   func goToDetail(ship: PirateShip, imageData: Data?) -> PirateShipDetailVC
 }
 
 class PirateShipViewModelImp: PirateShipViewModel {
-  var models: [PirateShip]
+  var models: Observable<[PirateShip]?>
   let api: PirateShipAPI
   var cache: [Int : Data]
   
-  init(model: [PirateShip], api: PirateShipAPI = PirateShipAPIImp()) {
-    self.models = model
+  init(api: PirateShipAPI = PirateShipAPIImp()) {
+    self.models = Observable<[PirateShip]?>(nil)
     self.api = api
     self.cache = [Int: Data]()
   }
   
-  func fetchPirateShips(completionHandler: @escaping (Bool, APIError?) -> Void) {
+  func setup() {
     api.getPirateShip { [weak self] response in
       guard let self = self else { return }
       switch response {
         case .success(let apiResponse):
           if apiResponse.success {
-            self.models = apiResponse.ships
-            completionHandler(true, nil)
+            self.models.value = apiResponse.ships
+//            completionHandler(true, nil)
           } else {
-            completionHandler(false, APIError.unknownError)
+//            completionHandler(false, APIError.unknownError)
         }
-        case .failure(let error):
-          completionHandler(false, error)
+        case .failure(let error): break
+//          completionHandler(false, error)
       }
     }
+  }
+  
+  func fetchPirateShips(completionHandler: @escaping (Bool, APIError?) -> Void) {
+    
   }
   
   func getImage(shipID: Int, url: String, completionHandler: @escaping (Data?) -> Void) {
