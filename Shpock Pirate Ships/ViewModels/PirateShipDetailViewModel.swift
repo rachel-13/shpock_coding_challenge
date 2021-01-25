@@ -9,8 +9,22 @@
 import Foundation
 
 protocol PirateShipDetailViewModel {
-  func displayShip(ship: PirateShip)
+  var model: PirateShip { get }
   func buttonTapped()
 }
+
+class PirateShipDetailViewModelImp: PirateShipDetailViewModel {
+  
+  var model: PirateShip
+  
+  init(model: PirateShip) {
+    self.model = model
+  }
+  
+  func buttonTapped() {
+    
+  }
+}
+
 
 

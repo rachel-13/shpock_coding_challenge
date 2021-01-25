@@ -10,7 +10,16 @@ import UIKit
 
 class PirateShipCollectionVC: UIViewController, UICollectionViewDelegate {
   private let cellIdentifier = "collectionCell"
-  var collectionView: UICollectionView!
+  lazy var collectionView: UICollectionView = {
+    let flowLayout = UICollectionViewFlowLayout()
+    let collView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout).withAutoLayout()
+    collView.showsVerticalScrollIndicator = false
+    collView.backgroundColor = .white
+    collView.delegate = self
+    collView.dataSource = self
+    return collView
+  }()
+  
   let viewModel: PirateShipViewModel = PirateShipViewModelImp(model: [PirateShip]())
   
   init() {
@@ -24,6 +33,7 @@ class PirateShipCollectionVC: UIViewController, UICollectionViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = .white
+    self.view.addSubview(collectionView)
     setupNavigationBar()
     setupCollectionView()
     fetchShips()
@@ -49,14 +59,6 @@ class PirateShipCollectionVC: UIViewController, UICollectionViewDelegate {
   }
   
   private func setupCollectionView() {
-    let flowLayout = UICollectionViewFlowLayout()
-    self.collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout).withAutoLayout()
-    collectionView.showsVerticalScrollIndicator = false
-    collectionView.backgroundColor = .white
-    collectionView.delegate = self
-    collectionView.dataSource = self
-    self.view.addSubview(collectionView)
-    
     collectionView.register(PirateShipCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
     
     let constraints = [
@@ -66,6 +68,10 @@ class PirateShipCollectionVC: UIViewController, UICollectionViewDelegate {
       collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
     ]
     NSLayoutConstraint.activate(constraints)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
   }
 }
 

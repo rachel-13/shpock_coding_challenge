@@ -13,6 +13,7 @@ protocol PirateShipViewModel {
   var cache: [Int: Data] { get }
   func fetchPirateShips(completionHandler: @escaping (Bool, APIError?) -> Void)
   func getImage(shipID: Int, url: String, completionHandler: @escaping (Data?) -> Void)
+  func goToDetail()
 }
 
 class PirateShipViewModelImp: PirateShipViewModel {
@@ -54,5 +55,9 @@ class PirateShipViewModelImp: PirateShipViewModel {
           completionHandler(nil)
       }
     }
+  }
+  
+  func goToDetail() {
+    
   }
 }
