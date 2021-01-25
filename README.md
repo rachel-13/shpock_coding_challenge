@@ -16,3 +16,4 @@ Ship Detail with image, title, description, price and a greeting button that dis
 * No storyboard
 * No third party libraries
 * MVVM with reactive-like traits
+* Basic unit tests
