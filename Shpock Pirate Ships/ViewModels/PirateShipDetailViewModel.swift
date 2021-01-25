@@ -10,19 +10,17 @@ import Foundation
 
 protocol PirateShipDetailViewModel {
   var model: PirateShip { get }
-  func buttonTapped()
+  var imageData: Data? { get }
 }
 
 class PirateShipDetailViewModelImp: PirateShipDetailViewModel {
   
   var model: PirateShip
+  var imageData: Data?
   
-  init(model: PirateShip) {
+  init(model: PirateShip, imageData: Data?) {
     self.model = model
-  }
-  
-  func buttonTapped() {
-    
+    self.imageData = imageData
   }
 }
 

@@ -136,9 +136,9 @@
 		96A4926625BC8381006C807C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				96D6A4B925BE50B70003F8B0 /* CollectionViewCell */,
 				96A4924225BC5E3E006C807C /* PirateShipCollectionVC.swift */,
 				96A4926D25BC849B006C807C /* PirateShipDetailVC.swift */,
-				96D6A4B325BDA2270003F8B0 /* PirateShipCollectionViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -158,6 +158,14 @@
 				96A4926925BC8408006C807C /* PirateShip.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		96D6A4B925BE50B70003F8B0 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				96D6A4B325BDA2270003F8B0 /* PirateShipCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

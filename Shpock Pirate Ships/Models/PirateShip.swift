@@ -26,6 +26,24 @@ struct PirateShip: Codable {
     case greetingType = "greeting_type"
     case imageData = "imageData" 
   }
+  
+  func getGreeting() -> String {
+    guard let greetingType = self.greetingType else {
+      return "Ahoi!"
+    }
+    switch greetingType {
+      case "ah":
+        return "Ahoi!"
+      case "ay":
+        return "Aye Aye!"
+      case "ar":
+        return "Arrr!"
+      case "yo":
+        return "Yo ho hooo!"
+      default:
+        return "Ahoi!"
+    }
+  }
 }
 
 struct GetPirateShipsResponse {

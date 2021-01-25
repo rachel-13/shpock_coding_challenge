@@ -71,7 +71,10 @@ class PirateShipCollectionVC: UIViewController, UICollectionViewDelegate {
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
+    let selectedShip = viewModel.models[indexPath.row]
+    let imageData = viewModel.cache[selectedShip.id]
+    let detailVC = viewModel.goToDetail(ship: selectedShip, imageData: imageData)
+    self.navigationController?.pushViewController(detailVC, animated: true)
   }
 }
 
