@@ -12,7 +12,6 @@
 		96A4924325BC5E3E006C807C /* PirateShipCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A4924225BC5E3E006C807C /* PirateShipCollectionVC.swift */; };
 		96A4924825BC5E41006C807C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96A4924725BC5E41006C807C /* Assets.xcassets */; };
 		96A4924B25BC5E41006C807C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96A4924925BC5E41006C807C /* LaunchScreen.storyboard */; };
-		96A4925625BC5E41006C807C /* Shpock_Pirate_ShipsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A4925525BC5E41006C807C /* Shpock_Pirate_ShipsTests.swift */; };
 		96A4926225BC608F006C807C /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A4926125BC608F006C807C /* UIView+Extensions.swift */; };
 		96A4926525BC832F006C807C /* PirateShipAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A4926425BC832F006C807C /* PirateShipAPIService.swift */; };
 		96A4926A25BC8408006C807C /* PirateShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A4926925BC8408006C807C /* PirateShip.swift */; };
@@ -21,6 +20,9 @@
 		96A4927225BC89A6006C807C /* PirateShipDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A4927125BC89A6006C807C /* PirateShipDetailViewModel.swift */; };
 		96A5D5CD25BE673A0019E327 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A5D5CC25BE673A0019E327 /* Observable.swift */; };
 		96A5D5D025BE751C0019E327 /* CollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A5D5CF25BE751C0019E327 /* CollectionCellViewModel.swift */; };
+		96A5D5D225BE7ACF0019E327 /* PirateShipViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A5D5D125BE7ACF0019E327 /* PirateShipViewModelTests.swift */; };
+		96A5D5D425BE7AE90019E327 /* PirateShipDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A5D5D325BE7AE90019E327 /* PirateShipDetailViewModelTests.swift */; };
+		96A5D5D825BE7B5C0019E327 /* PirateShipCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A5D5D725BE7B5C0019E327 /* PirateShipCellViewModelTests.swift */; };
 		96D6A4B425BDA2270003F8B0 /* PirateShipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6A4B325BDA2270003F8B0 /* PirateShipCollectionViewCell.swift */; };
 		96D6A4B825BDD06B0003F8B0 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6A4B725BDD06B0003F8B0 /* ServiceManager.swift */; };
 /* End PBXBuildFile section */
@@ -44,7 +46,6 @@
 		96A4924A25BC5E41006C807C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		96A4924C25BC5E41006C807C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96A4925125BC5E41006C807C /* Shpock Pirate ShipsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shpock Pirate ShipsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		96A4925525BC5E41006C807C /* Shpock_Pirate_ShipsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shpock_Pirate_ShipsTests.swift; sourceTree = "<group>"; };
 		96A4925725BC5E41006C807C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96A4926125BC608F006C807C /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		96A4926425BC832F006C807C /* PirateShipAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateShipAPIService.swift; sourceTree = "<group>"; };
@@ -54,6 +55,9 @@
 		96A4927125BC89A6006C807C /* PirateShipDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateShipDetailViewModel.swift; sourceTree = "<group>"; };
 		96A5D5CC25BE673A0019E327 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		96A5D5CF25BE751C0019E327 /* CollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellViewModel.swift; sourceTree = "<group>"; };
+		96A5D5D125BE7ACF0019E327 /* PirateShipViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateShipViewModelTests.swift; sourceTree = "<group>"; };
+		96A5D5D325BE7AE90019E327 /* PirateShipDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateShipDetailViewModelTests.swift; sourceTree = "<group>"; };
+		96A5D5D725BE7B5C0019E327 /* PirateShipCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateShipCellViewModelTests.swift; sourceTree = "<group>"; };
 		96D6A4B325BDA2270003F8B0 /* PirateShipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PirateShipCollectionViewCell.swift; sourceTree = "<group>"; };
 		96D6A4B725BDD06B0003F8B0 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,8 +118,10 @@
 		96A4925425BC5E41006C807C /* Shpock Pirate ShipsTests */ = {
 			isa = PBXGroup;
 			children = (
-				96A4925525BC5E41006C807C /* Shpock_Pirate_ShipsTests.swift */,
 				96A4925725BC5E41006C807C /* Info.plist */,
+				96A5D5D125BE7ACF0019E327 /* PirateShipViewModelTests.swift */,
+				96A5D5D325BE7AE90019E327 /* PirateShipDetailViewModelTests.swift */,
+				96A5D5D725BE7B5C0019E327 /* PirateShipCellViewModelTests.swift */,
 			);
 			path = "Shpock Pirate ShipsTests";
 			sourceTree = "<group>";
@@ -302,7 +308,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96A4925625BC5E41006C807C /* Shpock_Pirate_ShipsTests.swift in Sources */,
+				96A5D5D425BE7AE90019E327 /* PirateShipDetailViewModelTests.swift in Sources */,
+				96A5D5D825BE7B5C0019E327 /* PirateShipCellViewModelTests.swift in Sources */,
+				96A5D5D225BE7ACF0019E327 /* PirateShipViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
