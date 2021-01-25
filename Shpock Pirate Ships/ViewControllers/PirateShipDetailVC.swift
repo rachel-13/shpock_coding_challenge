@@ -43,6 +43,7 @@ class PirateShipDetailVC: UIViewController {
     let uiButton = UIButton(frame: .zero).withAutoLayout()
     uiButton.layer.cornerRadius = 5
     uiButton.backgroundColor = .systemBlue
+    uiButton.setTitle("Say Hi!", for: .normal)
     return uiButton
   }()
   
@@ -71,8 +72,28 @@ class PirateShipDetailVC: UIViewController {
     setupDescriptionLabel()
     setupPriceLabel()
     setupGreetingButton()
+    bindViewModel()
   }
   
+  private func bindViewModel() {
+    viewModel.model.bind { pirateShip in
+      self.titleLabel.text = pirateShip.title ?? "No Title Available"
+      self.descriptionLabel.text = pirateShip.description
+      self.priceLabel.text = "$\(pirateShip.price ?? 0)"
+    }
+    
+    viewModel.imageData.bind { data in
+      if let imageData = data,
+        let uiimage = UIImage(data: imageData) {
+        self.imageView.image = uiimage
+      }
+    }
+    
+    viewModel.greeting.bind { pirateGreeting in
+      if pirateGreeting.isEmpty { return }
+      self.showAlert(greeting: pirateGreeting)
+    }
+  }
 }
 
 extension PirateShipDetailVC {
@@ -84,11 +105,6 @@ extension PirateShipDetailVC {
       imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
     ]
     NSLayoutConstraint.activate(imageViewConstraints)
-    
-    if let imageData = viewModel.imageData,
-      let uiimage = UIImage(data: imageData) {
-      imageView.image = uiimage
-    }
   }
   
   private func setupTitleLabel() {
@@ -98,8 +114,6 @@ extension PirateShipDetailVC {
       titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10)
     ]
     NSLayoutConstraint.activate(titleLabelConstraints)
-    
-    titleLabel.text = viewModel.model.title ?? "No Title Available"
   }
   
   private func setupDescriptionLabel() {
@@ -109,8 +123,6 @@ extension PirateShipDetailVC {
       descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 25)
     ]
     NSLayoutConstraint.activate(descriptionLabelConstraints)
-    
-    descriptionLabel.text = viewModel.model.description
   }
   
   private func setupPriceLabel() {
@@ -121,8 +133,6 @@ extension PirateShipDetailVC {
       priceLabel.bottomAnchor.constraint(lessThanOrEqualTo: greetingButton.topAnchor, constant: 30)
     ]
     NSLayoutConstraint.activate(priceLabelConstraints)
-    
-    priceLabel.text = "$\(viewModel.model.price ?? 0)"
   }
   
   private func setupGreetingButton() {
@@ -133,12 +143,16 @@ extension PirateShipDetailVC {
       greetingButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30)
     ]
     NSLayoutConstraint.activate(buttonConstraints)
-    greetingButton.setTitle("Say Hi!", for: .normal)
+    
     greetingButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
   }
   
   @IBAction func didTapButton() {
-    let alert = UIAlertController(title: nil, message: viewModel.model.getGreeting(), preferredStyle: .alert)
+    viewModel.didTapButton()
+  }
+  
+  private func showAlert(greeting: String) {
+    let alert = UIAlertController(title: nil, message: greeting, preferredStyle: .alert)
     let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
     alert.addAction(okAction)
     self.present(alert, animated: true, completion: nil)

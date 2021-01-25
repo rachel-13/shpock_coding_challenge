@@ -9,18 +9,27 @@
 import Foundation
 
 protocol PirateShipDetailViewModel {
-  var model: PirateShip { get }
-  var imageData: Data? { get }
+  var model: Observable<PirateShip> { get }
+  var imageData: Observable<Data?> { get }
+  var greeting: Observable<String> { get }
+  func didTapButton()
 }
 
 class PirateShipDetailViewModelImp: PirateShipDetailViewModel {
   
-  var model: PirateShip
-  var imageData: Data?
+  var model: Observable<PirateShip>
+  var imageData: Observable<Data?>
+  var greeting: Observable<String>
   
   init(model: PirateShip, imageData: Data?) {
-    self.model = model
-    self.imageData = imageData
+    self.model = Observable(model)
+    self.imageData = Observable(imageData)
+    self.greeting = Observable("")
+  }
+  
+  func didTapButton() {
+    let pirateGreet = self.model.value.getGreeting()
+    self.greeting.value = pirateGreet
   }
 }
 
