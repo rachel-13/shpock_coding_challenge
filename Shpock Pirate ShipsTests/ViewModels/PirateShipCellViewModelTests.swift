@@ -16,7 +16,7 @@ class PirateShipCellViewModelTests: XCTestCase {
     sut = CollectionCellViewModel()
   }
   
-  func test_init_set_ship() {
+  func test_setShip() {
     let mockPirateShip = PirateShip(id: 1,
                                     title: "title1",
                                     description: nil,

@@ -18,7 +18,7 @@ class PirateShipAPIServiceTests: XCTestCase {
     sut = PirateShipAPIImp(serviceManager: mockServiceManager)
   }
   
-  func test_get_pirate_ship_api_succeeds() {
+  func test_getPirateShipAPI_succeeds() {
     mockServiceManager.shouldServiceManagerAPISucceed = true
     mockServiceManager.stubbedData = Constants.jsonString.data(using: .utf8) ?? Data()
     sut.getPirateShip { stubbedResponse in
@@ -31,7 +31,7 @@ class PirateShipAPIServiceTests: XCTestCase {
     }
   }
   
-  func test_get_pirate_ship_api_fails_parsingError() {
+  func test_getPirateShipAPI_failsWith_parsingError() {
     mockServiceManager.shouldServiceManagerAPISucceed = true
     mockServiceManager.stubbedData = "randomjsonstring".data(using: .utf8) ?? Data()
     sut.getPirateShip { stubbedResponse in
@@ -44,7 +44,7 @@ class PirateShipAPIServiceTests: XCTestCase {
     }
   }
   
-  func test_get_pirate_ship_image_download_succeeds() {
+  func test_getPirateShipImageDownload_succeeds() {
     mockServiceManager.shouldServiceManagerAPISucceed = true
     mockServiceManager.stubbedData = Data()
     sut.getImage(url: "someurl") { stubbedResponse in
@@ -57,7 +57,7 @@ class PirateShipAPIServiceTests: XCTestCase {
     }
   }
   
-  func test_get_pirate_ship_image_download_fails() {
+  func test_getPirateShipImageDownload_fails() {
     mockServiceManager.shouldServiceManagerAPISucceed = false
     mockServiceManager.stubbedData = Data()
     sut.getImage(url: "someurl") { stubbedResponse in

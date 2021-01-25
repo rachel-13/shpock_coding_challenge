@@ -13,7 +13,7 @@ class PirateShipDetailViewModelTests: XCTestCase {
   
   var sut: PirateShipDetailViewModelImp!
   
-  func test_didTapButton_with_ar() {
+  func test_didTapButtonWith_ar() {
     let mockPirateShip_ar = PirateShip(id: 1,
                                        title: "title1",
                                        description: nil,
@@ -27,7 +27,7 @@ class PirateShipDetailViewModelTests: XCTestCase {
     XCTAssertEqual(sut.model.value.title, mockPirateShip_ar.title)
   }
   
-  func test_didTapButton_with_ah() {
+  func test_didTapButtonWith_ah() {
     let mockPirateShip_ah = PirateShip(id: 2,
                                        title: nil,
                                        description: "description2",

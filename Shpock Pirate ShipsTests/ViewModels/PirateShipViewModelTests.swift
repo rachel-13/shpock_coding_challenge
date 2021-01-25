@@ -18,7 +18,7 @@ class PirateShipViewModelTests: XCTestCase {
     sut = PirateShipViewModelImp(api: mockAPI)
   }
   
-  func test_get_pirateships_api_succeeds() {
+  func test_getPirateShipsApi_succeeds() {
     let stubbedShip1: [String: Any] = ["id": 1, "title": "title1", "price": 1]
     let stubbedShip2: [String: Any] = ["id": 2, "title": NSNull(), "price": 2]
     let stubbedShip3: [String: Any] = ["id": 3, "title": "title3", "price": 1]
@@ -40,7 +40,7 @@ class PirateShipViewModelTests: XCTestCase {
     XCTAssertNil(sut.models.value?[1].title)
   }
   
-  func test_get_pirateships_api_fails() {
+  func test_getPirateShipsApi_fails() {
     
     mockAPI.shouldAPISucceed = false
     mockAPI.stubbedAPIError = APIError.parsingError
@@ -49,7 +49,7 @@ class PirateShipViewModelTests: XCTestCase {
     XCTAssertNil(sut.models.value)
   }
   
-  func test_image_download_succeeds() {
+  func test_getPirateShipImageDownload_succeeds() {
     mockAPI.shouldImageDownloadSucceed = true
     mockAPI.stubbedImageData = Data()
     sut.getImage(shipID: 1, url: "someurl") { data in
@@ -58,7 +58,7 @@ class PirateShipViewModelTests: XCTestCase {
     }
   }
   
-  func test_image_download_fails() {
+  func test_getPirateShipImageDownload_fails() {
     mockAPI.shouldImageDownloadSucceed = false
     sut.getImage(shipID: 1, url: "someurl") { data in
       XCTAssertEqual(0, self.sut.cache.count)
