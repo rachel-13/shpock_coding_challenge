@@ -12,8 +12,13 @@ Ship Detail with image, title, description, price and a greeting button that dis
 * "yo" -> "Yo ho hooo!"
 
 ### Nature of App
-* Purely Swift
-* No storyboard
+* Native Swift
+* No storyboard/XIB, just UIKit programmatic layout
 * No third party libraries
 * MVVM with reactive-like traits
 * Basic unit tests
+
+### Developed On:
+XCode 11.4.1
+Swift 5.0
+iPhone 11 Simulator (iOS 13.4.1)
