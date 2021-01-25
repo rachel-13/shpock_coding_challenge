@@ -19,6 +19,6 @@ Ship Detail with image, title, description, price and a greeting button that dis
 * Basic unit tests
 
 ### Developed On:
-*~ XCode 11.4.1
-*~ Swift 5.0
-*~ iPhone 11 Simulator (iOS 13.4.1)
+* XCode 11.4.1
+* Swift 5.0
+* iPhone 11 Simulator (iOS 13.4.1)
